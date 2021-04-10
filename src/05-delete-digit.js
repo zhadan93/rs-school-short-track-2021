@@ -9,8 +9,14 @@
  * For n = 152, the output should be 52
  *
  */
-function deleteDigit(/* n */) {
-  throw new Error('Not implemented');
+function deleteDigit(n) {
+  const stringOfNumber = String(n);
+  const numberPairsMas = [];
+
+  for (let i = 0; i < stringOfNumber.length; i++) {
+    numberPairsMas.push(+(stringOfNumber.slice(0, i) + stringOfNumber.slice(i + 1)));
+  }
+  return Math.max(...numberPairsMas);
 }
 
 module.exports = deleteDigit;

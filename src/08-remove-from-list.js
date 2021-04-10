@@ -16,9 +16,34 @@
  *   this.next = null;
  * }
  */
+function removeKFromList(l, k) {
+  //  предыдущий элемент перед текущим
+  let prevElement = null;
 
-function removeKFromList(/* l, k */) {
-  throw new Error('Not implemented');
+  // голова списка (самый первый элемент)
+  let headElement = l;
+
+  //  текущий элемент списка
+  let currentElement = headElement;
+
+  while (currentElement) {
+    if (currentElement.value === k) {
+      if (prevElement) {
+        //  чтобы удалить текущий элемент, нужно присвоить следующему элементу
+        //  после предыдущего следующий элемент после текущего
+        prevElement.next = currentElement.next;
+      } else {
+        //  если голова совпадает с заданным элементом, то переносим голову на следующий
+        //  элемент
+        headElement = headElement.next;
+      }
+    } else {
+      prevElement = currentElement;
+    }
+    // простой переход по элементам списка
+    currentElement = currentElement.next;
+  }
+  return headElement;
 }
 
 module.exports = removeKFromList;
